@@ -1,6 +1,8 @@
 # MathProcFin_R_code
 Code associated wtih City module MA3614 Mathematical Processes for Finance (PRD2 A 2020/21).
 
+This code is entirely optional and supplementary to the course. Coding will not be part of assessments.
+
 The code is written in R (https://en.wikipedia.org/wiki/R_(programming_language).
  
 I will add more code each week as the course progresses.
