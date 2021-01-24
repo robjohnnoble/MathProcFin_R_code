@@ -36,8 +36,6 @@ norm_approx <- function(exp_Wn, sd_Wn, x, y, w_n, p1, n1) {
   sd_Wn <- sqrt(var_rw(p = p1, n = n1, x = x, y = y))
   p_vec1 <- (w_n + (x-y)/2 - exp_Wn) / sd_Wn
   p_vec2 <- (w_n - (x-y)/2 - exp_Wn) / sd_Wn
-  # p_vec1 <- (w_n + x - exp_Wn) / sd_Wn
-  # p_vec2 <- (w_n + y - exp_Wn) / sd_Wn
   approx1 <- sapply(p_vec1, pnorm) - sapply(p_vec2, pnorm)
   return(approx1)
 }
@@ -47,39 +45,18 @@ approx1 <- sapply(w_n_vec, norm_approx, exp_Wn = exp_Wn, sd_Wn = sd_Wn, x = x, y
 tab2 <- as.data.frame(cbind(w_n_vec, approx1))
 colnames(tab2)[1] <- "w"
 
-#p_vec1a <- (w_vec - exp_Wn) / sd_Wn
-#approx2 <- sapply(p_vec1a, dnorm)
-#approx3 <- sapply(w_vec, dnorm, mean = exp_Wn, sd = sd_Wn)
-#approx2 <- (x - y) * approx2 / sum(approx2) / ((max(w_vec) - min(w_vec)) / 1000)
-#approx3 <- (x - y) * approx3 / sum(approx3) / ((max(w_vec) - min(w_vec)) / 1000)
-#tab2 <- as.data.frame(cbind(w_vec, approx1, approx2, approx3))
-
-# # data frame containing density of many random walks:
-# dist1 <- c()
-# for(i in 1:1e4) {
-#   W1 <- sample(c(y, x), n1, replace = TRUE, prob = c(1 - p1, p1))
-#   dist1 <- c(dist1, sum(W1))
-# }
-# tab1 <- as.data.frame(table(dist1))
-# tab1$density <- tab1$Freq / sum(tab1$Freq)
-# tab1$dist1 <- as.numeric(levels(tab1$dist1))[tab1$dist1]
-# colnames(tab1)[1] <- "w"
-
 # merge data frames:
 df <- merge(tab0, tab2, all = TRUE)
-# df <- merge(df, tab1, all = TRUE)
 
 # plot binomial distribution and approximation(s):
-pdf("RandomWalkNormalApprox.pdf", width = 5, height = 3)
+# pdf("RandomWalkNormalApprox.pdf", width = 5, height = 3)
 ggplot(df, aes(x = w, y = pmf_vec)) + 
   geom_bar(stat = "identity", width = 0.5, fill = "red") + 
   geom_line(aes(x = w, y = approx1)) + 
-  #geom_line(aes(x = w, y = approx2), col = "red", linetype = "dashed") + 
-  #geom_line(aes(x = w, y = approx3), col = "blue", linetype = "dotted") + 
   theme_classic() + 
   scale_x_continuous(breaks = 6*(-10:4) - 4) + 
   labs(x = expression(w[20]), y = "probability distribution")
-dev.off()
+# dev.off()
 
 rw_pmf(p1, x, y, -200, 1000)
 norm_approx(exp_Wn, sd_Wn, x, y, -200, p1, 1000)
@@ -101,7 +78,7 @@ tab1 <- as.data.frame(rbind(dist1, dist2, dist3, dist_n))
 tab1$n <- as.factor(tab1$n)
 levels(tab1$n) <- c("n = 1", "n = 2", "n = 10", "normal")
 
-pdf("CentralLimitUniform.pdf", width = 4, height = 3)
+# pdf("CentralLimitUniform.pdf", width = 4, height = 3)
 ggplot(tab1, aes(x = dist1, group = n, col = n, linetype = n)) + 
   geom_density() + 
   labs(x = expression(X[1] + ... + X[n])) + 
@@ -109,34 +86,5 @@ ggplot(tab1, aes(x = dist1, group = n, col = n, linetype = n)) +
   scale_color_manual(values = c("red", "blue", "magenta", "black")) + 
   scale_linetype_manual(values = c("solid","solid","solid","dashed")) + 
   theme(legend.title = element_blank())
-dev.off()
-
-# n <- 5000
-# dist1 <- c()
-# for(i in 1:1e3) {
-#   r1 <- sum(rbinom(n, 100, 0.3))
-#   dist1 <- c(dist1, r1)
-# }
-# tab1 <- as.data.frame(table(dist1))
-# tab1$density <- tab1$Freq / sum(tab1$Freq)
-# tab1$dist1 <- as.numeric(levels(tab1$dist1))[tab1$dist1]
-# 
-# ggplot(tab1, aes(x = dist1)) + 
-#   geom_histogram() + 
-#   theme_classic()
-# 
-# n <- 50000
-# dist1 <- c()
-# for(i in 1:1e3) {
-#   r1 <- sum(rpois(n, 30))
-#   dist1 <- c(dist1, r1)
-# }
-# tab1 <- as.data.frame(table(dist1))
-# tab1$density <- tab1$Freq / sum(tab1$Freq)
-# tab1$dist1 <- as.numeric(levels(tab1$dist1))[tab1$dist1]
-# 
-# ggplot(tab1, aes(x = dist1)) + 
-#   geom_histogram() + 
-#   theme_classic()
-
+# dev.off()
 
