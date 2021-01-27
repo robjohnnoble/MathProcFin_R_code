@@ -10,7 +10,7 @@ I will add more code each week as the course progresses.
 The easiest way to try out some code:
 * download and install R (https://cran.rstudio.com/)
 * download and install the free version of RStudio (https://rstudio.com/products/rstudio/download/#download)
-* create a new file (R script)
+* open RStudio and create a new file (R script)
 * copy and paste some code into your new file
 * click on the first line of code
 * repeatedly click the "Run" button or press Ctrl+Enter (Windows) or Cmd+Enter (Mac) to run each line of code
