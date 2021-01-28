@@ -19,4 +19,6 @@ You can alternatively download the files and save them on your computer (by clic
 
 Lines beginning with # are comments or code that will not be run. The commented-out lines beginning with "pdf" or "dev.off()" are for saving plots as pdf files.
 
+To run some of the code you will need to install packages such as ggplot2, which you can do in RStudio (click on the Tools menu, select "Install Packages...", and type the name of the package).
+
 For further help, see https://support.rstudio.com/hc/en-us/articles/201141096-Getting-Started-with-R.
