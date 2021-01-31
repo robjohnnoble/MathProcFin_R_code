@@ -112,7 +112,7 @@ cbvec_a <- c(0, cbvec_a[-length(cbvec_a)])
 
 nvec <- sapply(xx, pnorm, mean = mu, sd = sd)
 
-pdf("ContinuityCorrection1.pdf", width = 5, height = 3.5)
+# pdf("ContinuityCorrection1.pdf", width = 5, height = 3.5)
 par(mar = c(4,4,1,1))
 plot(nvec ~ xx, xlim = c(0, 40), xaxt = "n", 
      ylim = c(0, 1), type = "l", col = "red", lwd = 2, 
@@ -120,7 +120,7 @@ plot(nvec ~ xx, xlim = c(0, 40), xaxt = "n",
 lines(cbvec_a ~ xn_a, lwd = 2)
 axis(1, at = 4 * 0:10)
 points(cbvec ~ xn)
-dev.off()
+# dev.off()
 
 wn <- 24
 
@@ -128,7 +128,7 @@ stop_ind_bin <- min(which(xn_a >= wn))
 stop_ind_norm_bad1 <- min(which(xx >= wn))
 stop_ind_norm_bad2 <- min(which(xx >= wn + x2 - y2))
 
-pdf("ContinuityCorrection2.pdf", width = 5, height = 3.5)
+# pdf("ContinuityCorrection2.pdf", width = 5, height = 3.5)
 par(mar = c(4,4,1,1))
 plot(nvec ~ xx, xlim = c(0, 40), xaxt = "n", 
      ylim = c(0, 1), type = "l", col = "red", lwd = 2, 
@@ -142,12 +142,12 @@ abline(h = nvec[stop_ind_norm_bad1], lty = 2, col = "red")
 abline(v = wn, lty = 3)
 abline(h = cbvec_a[stop_ind_bin], lty = 3)
 axis(1, at = 4 * 0:10)
-dev.off()
+# dev.off()
 
 stop_ind_norm <- min(which(xx >= wn + (x2 - y2) / 2))
 stop_ind_norm_alt <- min(which(xx >= wn + x2))
 
-pdf("ContinuityCorrection3.pdf", width = 5, height = 3.5)
+# pdf("ContinuityCorrection3.pdf", width = 5, height = 3.5)
 par(mar = c(4,4,1,1))
 plot(nvec ~ xx, xlim = c(0, 40), xaxt = "n", 
      ylim = c(0, 1), type = "l", col = "red", lwd = 2, 
@@ -161,7 +161,7 @@ abline(h = nvec[stop_ind_norm], lty = 2, col = "red")
 abline(v = wn, lty = 3)
 abline(h = cbvec_a[stop_ind_bin], lty = 3)
 axis(1, at = 4 * 0:10)
-dev.off()
+# dev.off()
 
 nvec_pmf <- sapply(xx, norm_approx, x = x2, y = y2, p = p2, n = n2)
 
