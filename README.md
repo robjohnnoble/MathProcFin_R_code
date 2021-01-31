@@ -10,7 +10,7 @@ I will add more code each week as the course progresses.
 The easiest way to try out some code:
 * download and install R (https://cran.rstudio.com/)
 * download and install the free version of RStudio (https://rstudio.com/products/rstudio/download/#download)
-* create a new file (R script)
+* open RStudio and create a new file (R script)
 * copy and paste some code into your new file
 * click on the first line of code
 * repeatedly click the "Run" button or press Ctrl+Enter (Windows) or Cmd+Enter (Mac) to run each line of code
@@ -18,5 +18,7 @@ The easiest way to try out some code:
 You can alternatively download the files and save them on your computer (by clicking the green "Code" button on the main page and selecting "Download ZIP"). Or, if you're familiar with GitHub, you can clone this repository.
 
 Lines beginning with # are comments or code that will not be run. The commented-out lines beginning with "pdf" or "dev.off()" are for saving plots as pdf files.
+
+To run some of the code you will need to install packages such as ggplot2, which you can do in RStudio (click on the Tools menu, select "Install Packages...", and type the name of the package).
 
 For further help, see https://support.rstudio.com/hc/en-us/articles/201141096-Getting-Started-with-R.
